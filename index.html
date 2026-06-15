@@ -1,0 +1,1435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <title>Michelle Languido — Portfolio</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+        *, *::before, *::after {
+            margin: 0; padding: 0;
+            box-sizing: border-box;
+            text-decoration: none;
+            border: none; outline: none;
+        }
+
+        :root {
+            --bg:        #0f0d0d;
+            --bg2:       #161212;
+            --bg3:       #1e1818;
+            --text:      #f0ebe6;
+            --muted:     #9e9189;
+            --gold:      #c9a96e;
+            --gold-dim:  #8f6f3e;
+            --line:      rgba(201,169,110,0.18);
+            --font-display: 'Cormorant Garamond', Georgia, serif;
+            --font-body:    'DM Sans', system-ui, sans-serif;
+            --radius:    1.2rem;
+            --transition: 0.35s ease;
+            --header-h: 6.4rem;
+        }
+
+        html { font-size: 62.5%; overflow-x: hidden; }
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: var(--font-body);
+            font-size: 1.6rem;
+            line-height: 1.7;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ── TYPOGRAPHY ── */
+        .eyebrow {
+            display: block;
+            font-family: var(--font-body);
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: .3rem;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: .8rem;
+        }
+        .eyebrow.center { text-align: center; }
+
+        .heading {
+            font-family: var(--font-display);
+            font-size: 4.8rem;
+            font-weight: 400;
+            line-height: 1.15;
+            margin-bottom: 3rem;
+        }
+        .heading.center { text-align: center; }
+
+        .gold { color: var(--gold); }
+
+        p { text-align: justify; }
+
+        /* ── HEADER ── */
+        .header {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%;
+            height: var(--header-h);
+            padding: 0 7%;
+            background: rgba(15,13,13,0.96);
+            backdrop-filter: blur(12px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 1px solid var(--line);
+            flex-shrink: 0;
+        }
+
+        .logo {
+            font-family: var(--font-display);
+            font-size: 2.4rem;
+            font-weight: 600;
+            color: var(--text);
+            letter-spacing: .05em;
+        }
+        .logo span { color: var(--gold); }
+
+        .navbar { display: flex; align-items: center; }
+        .navbar a {
+            font-size: 1.4rem;
+            font-weight: 500;
+            color: var(--muted);
+            margin-left: 3rem;
+            letter-spacing: .04em;
+            transition: color var(--transition);
+            position: relative;
+            cursor: pointer;
+            background: none;
+        }
+        .navbar a::after {
+            content: '';
+            position: absolute;
+            bottom: -.4rem; left: 0;
+            width: 0; height: 1px;
+            background: var(--gold);
+            transition: width var(--transition);
+        }
+        .navbar a:hover { color: var(--text); }
+        .navbar a.active { color: var(--text); }
+        .navbar a.active::after, .navbar a:hover::after { width: 100%; }
+
+        .header-actions {
+            display: flex; align-items: center; gap: 1.8rem;
+        }
+        .social-icon {
+            font-size: 1.8rem; color: var(--muted);
+            transition: color var(--transition);
+        }
+        .social-icon:hover { color: var(--gold); }
+
+        .btn-outline {
+            display: inline-flex; align-items: center; gap: .6rem;
+            padding: .7rem 1.8rem;
+            border: 1px solid var(--gold);
+            border-radius: 4rem;
+            font-size: 1.3rem; font-weight: 500;
+            color: var(--gold); letter-spacing: .05em;
+            transition: var(--transition);
+        }
+        .btn-outline:hover { background: var(--gold); color: var(--bg); }
+
+        #menu-icon {
+            font-size: 2.8rem; color: var(--text);
+            display: none; cursor: pointer;
+        }
+
+        /* ── BUTTONS ── */
+        .btn {
+            display: inline-flex; align-items: center; gap: .6rem;
+            padding: 1.2rem 3rem;
+            background: var(--gold);
+            border-radius: 4rem;
+            font-size: 1.4rem; font-weight: 600;
+            color: var(--bg); letter-spacing: .05em;
+            transition: var(--transition);
+            cursor: pointer; font-family: var(--font-body);
+        }
+        .btn:hover { background: #b88f56; box-shadow: 0 0 2rem rgba(201,169,110,0.3); }
+        .btn-full { width: 100%; justify-content: center; border-radius: .8rem; }
+        .btn-ghost {
+            display: inline-flex; align-items: center; gap: .6rem;
+            padding: 1.2rem 3rem;
+            font-size: 1.4rem; font-weight: 500;
+            color: var(--muted); letter-spacing: .05em;
+            transition: color var(--transition);
+        }
+        .btn-ghost:hover { color: var(--gold); }
+
+        /* ── SECTIONS WRAPPER (tab system) ── */
+        .sections-wrapper {
+            margin-top: var(--header-h);
+            flex: 1;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .section {
+            display: none;
+            position: absolute;
+            inset: 0;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+        .section.active { display: block; }
+
+        /* Custom scrollbar */
+        .section::-webkit-scrollbar { width: 5px; }
+        .section::-webkit-scrollbar-track { background: var(--bg); }
+        .section::-webkit-scrollbar-thumb { background: var(--gold-dim); border-radius: 4px; }
+
+        /* Transition overlay */
+        .fade-overlay {
+            position: fixed; inset: 0;
+            background: var(--bg);
+            z-index: 500;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity .25s ease;
+        }
+        .fade-overlay.show { opacity: 1; pointer-events: all; }
+
+        /* ── HOME ── */
+        #home {
+            background: var(--bg);
+        }
+        .home-inner {
+            min-height: calc(100vh - var(--header-h));
+            padding: 3rem 7%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+
+        .home-content { flex: 1; }
+        .home-content h1 {
+            font-family: var(--font-display);
+            font-size: 7.5rem; font-weight: 300;
+            line-height: 1.1; margin-bottom: 1.5rem;
+        }
+        .typed-line {
+            font-size: 2rem; color: var(--muted);
+            margin-bottom: 1rem;
+            text-align: left;
+        }
+        .tagline {
+            font-family: var(--font-display);
+            font-style: italic;
+            font-size: 1.9rem; color: var(--gold-dim);
+            margin-bottom: 3.5rem;
+            text-align: left;
+        }
+        .home-btns {
+            display: flex; align-items: center;
+            gap: 1.5rem; flex-wrap: wrap;
+        }
+
+        /* Home image — same style as About */
+        .home-img {
+            flex: 0 0 42%;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+        }
+        .home-img img {
+            width: 100%;
+            max-width: 43rem;
+            height: auto;
+            object-fit: cover;
+            object-position: top;
+            border-radius: var(--radius);
+            display: block;
+        }
+
+        /* ── ABOUT ── */
+        #about { background: var(--bg2); }
+        .about-inner {
+            min-height: calc(100vh - var(--header-h));
+            padding: 3rem 7%;
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+        .about-img { flex: 0 0 38%; }
+        .about-img img {
+            width: 97%; height: auto;
+            border-radius: var(--radius);
+            object-fit: cover;
+        }
+        .about-content { flex: 1; }
+        .about-content p {
+            font-size: 1.4rem; color: var(--muted);
+            margin-bottom: 1rem; line-height: 2;
+            text-align: justify;
+            text-indent: 1.5rem;
+        }
+        .about-stats {
+            display: flex; gap: 3rem;
+            margin-top: 1rem; padding-top: 1rem;
+            border-top: 1px solid var(--line);
+        }
+        .stat { display: flex; flex-direction: column; gap: .4rem; }
+        .stat-num {
+            font-family: var(--font-display);
+            font-size: 3rem; font-weight: 500;
+            color: var(--gold); line-height: 1;
+        }
+        .stat-label {
+            font-size: 1.2rem; color: var(--muted);
+            line-height: 1.4; letter-spacing: .03em;
+        }
+
+        /* ── SKILLS ── */
+        #skills { background: var(--bg); }
+        .skills-inner {
+            padding: 2rem 7%;
+        }
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .skills-box {
+            background: var(--bg3);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 1rem 1rem;
+            transition: var(--transition);
+        }
+        .skills-box:hover {
+            border-color: var(--gold);
+            transform: translateY(-3px);
+            box-shadow: 0 1rem 2.5rem rgba(0,0,0,.4);
+        }
+        .skills-icon {
+            width: 3rem; height: 5rem;
+            background: rgba(201,169,110,0.1);
+            border-radius: 1rem;
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 1rem;
+        }
+        .skills-icon i { font-size: 2.2rem; color: var(--gold); }
+        .skills-box h3 {
+            font-family: var(--font-display);
+            font-size: 1.5rem; font-weight: 600;
+            margin-bottom: .5rem;
+        }
+        .skills-langs {
+            font-size: 1rem; letter-spacing: .08em;
+            color: var(--gold); text-transform: uppercase;
+            margin-bottom: 1rem; font-weight: 500;
+        }
+        .skills-summary {
+            font-size: 1.2rem; color: var(--muted);
+            line-height: 1.65;
+            text-align: justify;
+        }
+        
+
+        .skills-full.open { display: block; }
+
+        /* Soft skills */
+        .soft-skills {
+            margin-top: 2rem; padding-top: 2rem;
+            border-top: 1px solid var(--line);
+        }
+        .soft-skills-grid {
+            display: flex; flex-wrap: wrap;
+            gap: 1rem; justify-content: center;
+            margin-top: 2rem;
+        }
+        .soft-skills-grid span {
+            display: flex; align-items: center; gap: .6rem;
+            padding: .5rem 1.8rem;
+            background: var(--bg3);
+            border: 1px solid var(--line);
+            border-radius: 4rem;
+            font-size: 1.3rem; color: var(--text);
+            transition: var(--transition);
+        }
+        .soft-skills-grid span i { color: var(--gold); font-size: 1rem; }
+        .soft-skills-grid span:hover { border-color: var(--gold); color: var(--gold); }
+
+       /* ── PROJECTS ── */ #projects { background: var(--bg2); } .projects-inner { padding: 2rem 7%; } .project-featured { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem; margin-bottom: 3rem; padding: 2.5rem; background: var(--bg3); border: 1px solid var(--line); border-radius: calc(var(--radius) * 1.5); align-items: start; } .project-badge { display: inline-block; font-size: 1rem; font-weight: 500; letter-spacing: .15rem; text-transform: uppercase; color: var(--gold); background: rgba(201,169,110,0.1); border: 1px solid rgba(201,169,110,0.25); padding: .4rem 1.2rem; border-radius: 4rem; margin-bottom: 1.2rem; } .project-featured-text h3 { font-family: var(--font-display); font-size: 2.2rem; font-weight: 400; line-height: 1.2; margin-bottom: 1.4rem; color: var(--text); } .project-featured-text p { font-size: 1.5rem; color: var(--muted); line-height: 1.8; margin-bottom: 1.4rem; text-align: justify; text-indent: 2rem; } .project-featured-text p strong { color: var(--text); font-weight: 600; } .project-stack-row { display: flex; flex-wrap: wrap; gap: .7rem; margin: 1.6rem 0; } .project-stack-row span { font-size: 1.2rem; font-weight: 500; color: var(--gold); background: rgba(201,169,110,0.08); border: 1px solid rgba(201,169,110,0.2); padding: .4rem 1.2rem; border-radius: 4rem; letter-spacing: .04em; } .project-actions { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; margin-top: 2rem; } /* Gallery */ .project-featured-gallery { display: flex; flex-direction: column; gap: 1.2rem; } .gallery-team-photo { width: 100%; max-height: 28rem; object-fit: contain; display: block; margin: 0 auto; cursor: zoom-in; } .gallery-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; } .gallery-row img { width: 100%; height: 18rem; object-fit: contain; border-radius: var(--radius); border: 1px solid var(--line); background: var(--bg3); display: block; cursor: zoom-in; transition: transform .3s ease; } .gallery-row img:hover { transform: scale(1.02); } .gallery-caption { font-size: 1.3rem; color: var(--muted); text-align: center; font-style: italic; margin-top: .2rem; line-height: 1.5; } /* Project cards grid */ .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr)); gap: 2rem; } .project-card { background: var(--bg3); border: 1px solid var(--line); border-radius: var(--radius); padding: 3rem 2.8rem; transition: var(--transition); } .project-card:hover { border-color: var(--gold); transform: translateY(-4px); box-shadow: 0 1.2rem 3rem rgba(0,0,0,.4); } .project-card-icon { width: 5.5rem; height: 5.5rem; background: rgba(201,169,110,0.1); border-radius: 1.2rem; display: flex; align-items: center; justify-content: center; margin-bottom: 1.8rem; } .project-card-icon i { font-size: 2.4rem; color: var(--gold); } .project-card h3 { font-family: var(--font-display); font-size: 2.2rem; font-weight: 600; margin-bottom: 1rem; } .project-card p { font-size: 1.5rem; color: var(--muted); line-height: 1.7; margin-bottom: 1.6rem; text-align: justify; text-indent: 1.5rem; }
+
+        /* ── EXPERIENCE ── */
+        #experience { background: var(--bg); }
+        .experience-inner { padding: 5rem 7%; }
+        .timeline {
+            position: relative; margin-top: 4rem;
+            max-width: 90rem; margin-left: auto; margin-right: auto;
+        }
+        .timeline::before {
+            content: ''; position: absolute;
+            top: 0; bottom: 0; left: 1.4rem;
+            width: 1px; background: var(--line);
+        }
+        .timeline-item {
+            position: relative; padding-left: 5rem; margin-bottom: 4rem;
+        }
+        .timeline-item:last-child { margin-bottom: 0; }
+        .timeline-dot {
+            position: absolute; left: .7rem; top: .8rem;
+            width: 1.6rem; height: 1.6rem;
+            border-radius: 50%; background: var(--gold);
+            border: 2px solid var(--bg);
+            box-shadow: 0 0 0 4px rgba(201,169,110,.2);
+        }
+        .timeline-content {
+            background: var(--bg3); border: 1px solid var(--line);
+            border-radius: var(--radius); padding: 3rem;
+        }
+        .timeline-header {
+            display: flex; justify-content: space-between;
+            align-items: flex-start; flex-wrap: wrap;
+            gap: 1rem; margin-bottom: 1.5rem;
+        }
+        .timeline-content h3 {
+            font-family: var(--font-display);
+            font-size: 2.4rem; font-weight: 600;
+        }
+        .timeline-company {
+            font-size: 1.4rem; color: var(--gold);
+            margin-top: .4rem; display: flex;
+            align-items: center; gap: .6rem;
+        }
+        .timeline-date {
+            font-size: 1.3rem; color: var(--muted);
+            background: var(--bg2); padding: .5rem 1.4rem;
+            border-radius: 4rem; border: 1px solid var(--line);
+            white-space: nowrap;
+        }
+        .timeline-intro {
+            font-size: 1.5rem; color: var(--muted);
+            line-height: 1.7; margin-bottom: 1.8rem;
+            padding-bottom: 1.8rem; border-bottom: 1px solid var(--line);
+            text-align: justify; text-indent: 2rem;
+        }
+        .timeline-intro strong { color: var(--text); font-weight: 600; }
+        .timeline-list {
+            list-style: none; display: flex;
+            flex-direction: column; gap: 1rem; margin-bottom: 2rem;
+        }
+        .timeline-list li {
+            font-size: 1.5rem; color: var(--muted);
+            padding-left: 1.8rem; position: relative; line-height: 1.6;
+            text-align: justify;
+        }
+        .timeline-list li::before {
+            content: '→'; position: absolute; left: 0;
+            color: var(--gold); font-size: 1.2rem;
+        }
+        .timeline-tags {
+            display: flex; flex-wrap: wrap; gap: .8rem;
+            margin-top: 2rem; padding-top: 2rem;
+            border-top: 1px solid var(--line);
+        }
+        .timeline-tags span {
+            font-size: 1.2rem; font-weight: 500;
+            color: var(--gold);
+            background: rgba(201,169,110,0.08);
+            border: 1px solid rgba(201,169,110,0.2);
+            padding: .4rem 1.2rem; border-radius: 4rem;
+            letter-spacing: .03em;
+        }
+
+        /* ── EDUCATION ── */
+        #education { background: var(--bg2); }
+        .education-inner {
+            min-height: calc(100vh - var(--header-h));
+            padding: 5rem 7%;
+            display: flex; flex-direction: column; justify-content: center;
+        }
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
+            gap: 2.5rem; margin-top: 4rem;
+        }
+        .education-card {
+            background: var(--bg3); border: 1px solid var(--line);
+            border-radius: var(--radius); padding: 3rem 2.5rem;
+            transition: var(--transition); text-align: center;
+        }
+
+.education-card {
+    background: var(--bg3);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 3rem 2.5rem;
+    transition: var(--transition);
+    text-align: center;
+}
+
+        .education-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-4px);
+            box-shadow: 0 1.2rem 3rem rgba(0,0,0,.4);
+        }
+        .current-edu {
+            border-color: rgba(201,169,110,0.4);
+            box-shadow: 0 0 2.5rem rgba(201,169,110,0.08);
+        }
+        .edu-icon {
+            width: 5.5rem; height: 5.5rem;
+            background: rgba(201,169,110,.1); border-radius: 1rem;
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 2rem;
+        }
+        .edu-icon i { font-size: 2.2rem; color: var(--gold); }
+        .education-card h3 {
+            font-family: var(--font-display);
+            font-size: 2rem; font-weight: 600; margin-bottom: .8rem;
+
+        }
+.edu-school {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: .5rem;
+    text-align: center;
+}
+
+.edu-course {
+            font-size: 1.3rem; color: var(--muted);
+            margin-bottom: 1.5rem; line-height: 1.5;
+            display: flex; align-items: center; justify-content: center;
+
+        }
+        .edu-year {
+            display: inline-block; font-size: 1.2rem;
+            color: var(--gold); background: rgba(201,169,110,.08);
+            padding: .4rem 1.4rem; border-radius: 4rem;
+            border: 1px solid rgba(201,169,110,.2);
+        }
+
+    
+/* ── CONTACT ── */
+#contact {
+    background: var(--bg);
+}
+
+.contact-inner {
+    min-height: calc(100vh - var(--header-h));
+    padding: 3rem 7%;
+}
+
+.contact-tagline {
+    text-align: center;
+    font-size: 1.6rem;
+    color: var(--muted);
+    margin-bottom: 4rem;
+}
+
+.contact-wrapper {
+    max-width: 115rem;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 2.5rem;
+    align-items: start;
+}
+
+/* FORM */
+.contact-form-wrap {
+    background: var(--bg3);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 3rem;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.8rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: .7rem;
+}
+
+.form-group label {
+    font-size: 1.2rem;
+    font-weight: 500;
+    letter-spacing: .08rem;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 1.4rem 1.8rem;
+    font-size: 1.5rem;
+    font-family: var(--font-body);
+    color: var(--text);
+    background: var(--bg2);
+    border: 1px solid var(--line);
+    border-radius: .8rem;
+    transition: .3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--gold);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 18rem;
+}
+
+.form-status {
+    text-align: center;
+    color: var(--gold);
+    min-height: 2rem;
+}
+
+/* CONTACT CARDS */
+.contact-card-group {
+    display: grid;
+    gap: 1rem;
+}
+
+.contact-card {
+    background: var(--bg3);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 2rem;
+    transition: var(--transition);
+}
+
+.contact-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-3px);
+}
+
+.contact-card i {
+    font-size: 2rem;
+    color: var(--gold);
+    margin-bottom: 1rem;
+}
+
+.contact-card h4 {
+    font-size: 1.5rem;
+    margin-bottom: .5rem;
+}
+
+.contact-card p,
+.contact-card a {
+    font-size: 1.4rem;
+    color: var(--muted);
+}
+
+.contact-card a:hover {
+    color: var(--gold);
+}
+
+/* FOOTER */
+.footer {
+    background: #080606;
+    border-top: 1px solid var(--line);
+    padding: 4rem 7%;
+    margin-top: 5rem;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 4rem;
+    max-width: 110rem;
+    margin: 0 auto;
+}
+
+.footer-logo {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.footer-logo span {
+    color: var(--gold);
+}
+
+.footer-brand p {
+    color: var(--muted);
+    font-size: 1.4rem;
+    line-height: 1.8;
+    text-align: left;
+}
+
+.footer-col h4 {
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: .2rem;
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+
+.footer-contact-list,
+.footer-social-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.footer-contact-list li,
+.footer-social-list a {
+    color: var(--muted);
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.footer-contact-list i,
+.footer-social-list i {
+    color: var(--gold);
+}
+
+.footer-bottom {
+    max-width: 110rem;
+    margin: 3rem auto 0;
+    padding-top: 2rem;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.back-top {
+    width: 4rem;
+    height: 4rem;
+    background: var(--gold);
+    border-radius: .8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--bg);
+}
+
+@media (max-width: 768px) {
+    .contact-wrapper {
+        grid-template-columns: 1fr;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
+
+
+/* ── FOOTER ── */
+.footer {
+    background: #080606;
+    border-top: 1px solid var(--line);
+    padding: 4rem 7%;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 4rem;
+    max-width: 110rem;
+    margin: 0 auto;
+}
+
+.footer-logo {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.footer-logo span {
+    color: var(--gold);
+}
+
+.footer-brand p {
+    color: var(--muted);
+    font-size: 1.4rem;
+    line-height: 1.8;
+    text-align: left;
+}
+
+.footer-col h4 {
+    color: var(--gold);
+    letter-spacing: .2rem;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+
+.footer-contact-list,
+.footer-social-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.3rem;
+}
+
+.footer-contact-list li,
+.footer-social-list li a {
+    color: var(--muted);
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.footer-contact-list i,
+.footer-social-list i {
+    color: var(--gold);
+}
+
+.footer-social-list a:hover {
+    color: var(--gold);
+}
+
+.footer-bottom {
+    max-width: 110rem;
+    margin: 3rem auto 0;
+    padding-top: 2rem;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-bottom p {
+    color: var(--muted);
+    font-size: 1.3rem;
+}
+
+.back-top {
+    width: 4rem;
+    height: 4rem;
+    background: var(--gold);
+    border-radius: .8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--bg);
+    transition: var(--transition);
+}
+
+.back-top:hover {
+    background: #b88f56;
+}
+
+@media (max-width: 768px) {
+    .contact-wrapper {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+}
+        /* ── RESPONSIVE ── */
+        @media (max-width: 1200px) {
+            html { font-size: 56%; }
+            .skills-container { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 991px) {
+            .header { padding: 0 4%; }
+            .home-inner, .about-inner, .skills-inner, .projects-inner,
+            .experience-inner, .education-inner, .contact-inner { padding: 5rem 4%; }
+            .footer { padding: 4rem 4%; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+            .project-featured { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            html { font-size: 52%; }
+            #menu-icon { display: block; }
+            .navbar {
+                position: absolute; top: 100%; left: 0; width: 100%;
+                padding: 2rem 4%;
+                background: rgba(10,8,8,0.97);
+                border-top: 1px solid var(--line);
+                display: none; flex-direction: column;
+            }
+            .navbar.active { display: flex; }
+            .navbar a {
+                margin-left: 0; font-size: 1.8rem;
+                padding: 1rem 0;
+                border-bottom: 1px solid var(--line);
+            }
+            .navbar a::after { display: none; }
+            .header-actions .social-icon { display: none; }
+
+            .home-inner {
+                flex-direction: column-reverse;
+                text-align: center; padding-top: 4rem;
+            }
+            .home-content h1 { font-size: 5.5rem; }
+            .typed-line, .tagline { text-align: center; }
+            .home-btns { justify-content: center; }
+            .home-img { flex: none; width: 100%; }
+            .home-img img { max-width: 26rem; margin: 0 auto; }
+
+            .about-inner { flex-direction: column; }
+            .about-img { flex: none; max-width: 100%; }
+            .about-stats { gap: 2rem; flex-wrap: wrap; }
+
+            .skills-container { grid-template-columns: 1fr; }
+
+            .form-row { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; gap: 3rem; }
+
+            .timeline::before { left: 1rem; }
+            .timeline-item { padding-left: 3.5rem; }
+            .timeline-dot { left: .5rem; }
+            .timeline-header { flex-direction: column; }
+
+            .gallery-row { grid-template-columns: 1fr; }
+            .gallery-row img { height: 22rem; }
+        }
+
+        @media (max-width: 480px) {
+            html { font-size: 48%; }
+            .home-content h1 { font-size: 4.5rem; }
+            .heading { font-size: 3.8rem; }
+            .project-actions { flex-direction: column; align-items: flex-start; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { animation: none !important; transition: none !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="fade-overlay" id="fade-overlay"></div>
+
+    <!-- HEADER -->
+    <header class="header" id="header">
+        <a class="logo" href="#" onclick="showSection('home'); return false;">ML<span>.</span></a>
+        <i class="fa-solid fa-bars" id="menu-icon"></i>
+        <nav class="navbar" id="navbar">
+            <a href="#" onclick="showSection('home'); return false;" data-section="home" class="active">Home</a>
+            <a href="#" onclick="showSection('about'); return false;" data-section="about">About</a>
+            <a href="#" onclick="showSection('skills'); return false;" data-section="skills">Skills</a>
+            <a href="#" onclick="showSection('projects'); return false;" data-section="projects">Projects</a>
+            <a href="#" onclick="showSection('experience'); return false;" data-section="experience">Experience</a>
+            <a href="#" onclick="showSection('education'); return false;" data-section="education">Education</a>
+            <a href="#" onclick="showSection('contact'); return false;" data-section="contact">Contact</a>
+        </nav>
+        <div class="header-actions">
+            <a href="https://www.facebook.com/mishaelle.sibuyan" target="_blank" class="social-icon" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+            <a href="https://www.instagram.com/mishaelle_languido/?hl=en" target="_blank" class="social-icon" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="Internship Resume_Languido, Michelle.pdf" class="btn-outline" download>
+                <i class="fa-solid fa-download"></i> Resume
+            </a>
+        </div>
+    </header>
+
+    <!-- SECTIONS WRAPPER -->
+    <div class="sections-wrapper">
+
+        <!-- HOME -->
+        <section class="section active" id="home">
+            <div class="home-inner">
+                <div class="home-content">
+                    <p class="eyebrow">Hello, I'm</p>
+                    <h1>Michelle <br><span class="gold">Languido</span></h1>
+                    <p class="typed-line">I'm <span class="multiple-text"></span></p>
+                    <p class="tagline">Innovate with Precision. Build with Passion.</p>
+                    <div class="home-btns">
+                        <a href="#" onclick="showSection('projects'); return false;" class="btn">View My Work <i class="fa-solid fa-arrow-right"></i></a>
+                        <a href="#" onclick="showSection('contact'); return false;" class="btn-ghost">Get in Touch <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="home-img">
+                    <img src="hompic.png" alt="Michelle Languido">
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT -->
+        <section class="section" id="about">
+            <div class="about-inner">
+                <div class="about-img">
+                    <img src="aboutpict.png" alt="About Michelle">
+                </div>
+                <div class="about-content">
+                    <h2 class="heading">About <span class="gold">Me</span></h2>
+                    <p>I'm an incoming 4th-year <strong>Bachelor of Information Technology — Computer Technology</strong> student at Cebu Technological University, driven by a deep curiosity for how technology solves real-world problems. My academic journey has taken me from writing my first lines of code to building a fully functional hardware-software kiosk system from the ground up.</p>
+                    <p>Beyond the classroom, I spent a year working in a fast-paced professional environment where I sharpened my communication, critical thinking, and adaptability — qualities that translate directly into how I approach every technical project. I believe great IT professionals aren't just coders; they're problem-solvers who can communicate clearly, adapt quickly, and build things that actually work.</p>
+                    <p>I'm currently seeking an OJT / internship opportunity where I can contribute meaningfully, grow within a team, and bridge the gap between academic learning and real industry experience.</p>
+                    <div class="about-stats">
+                        <div class="stat">
+                            <span class="stat-num">2+</span>
+                            <span class="stat-label">Major Projects<br>Completed</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-num">1yr+</span>
+                            <span class="stat-label">Professional<br>Work Experience</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-num">4th</span>
+                            <span class="stat-label">Year BIT-CT<br>Student</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SKILLS -->
+        <section class="section" id="skills">
+            <div class="skills-inner">
+                <h2 class="heading center">Technical <span class="gold">Skills</span></h2>
+                <div class="skills-container">
+
+                <div class="skills-box">
+    <div class="skills-icon"><i class="fa-solid fa-code"></i></div>
+    <h3>Programming</h3>
+    <p class="skills-langs">JavaScript · PHP · C · Embedded C</p>
+    <p class="skills-summary">
+        Familiar with the basics of programming through coursework and hands-on projects. Applied C and Embedded C in my thesis firmware, and used JavaScript and PHP in web-based academic outputs.
+    </p>
+</div>
+
+<div class="skills-box">
+    <div class="skills-icon"><i class="fa-solid fa-globe"></i></div>
+    <h3>Web Development</h3>
+    <p class="skills-langs">HTML · CSS · Bootstrap · PHP</p>
+    <p class="skills-summary">
+        Can build basic web pages using HTML and CSS, and have worked with Bootstrap for layout and responsiveness. Applied these in academic projects including my personal portfolio and a group web system.
+    </p>
+</div>
+
+            <div class="skills-box">
+    <div class="skills-icon"><i class="fa-solid fa-database"></i></div>
+    <h3>Database Management</h3>
+    <p class="skills-langs">MySQL · SQL · CRUD</p>
+    <p class="skills-summary">
+        Familiar with database design, SQL queries, and CRUD operations used in web-based academic projects.
+    </p>
+</div>
+
+                  <div class="skills-box">
+    <div class="skills-icon"><i class="fa-solid fa-microchip"></i></div>
+    <h3>Embedded Systems</h3>
+    <p class="skills-langs">ESP32 · Hardware Integration</p>
+    <p class="skills-summary">
+        Hands-on experience developing and testing an ESP32-based self-service e-loading kiosk, including hardware integration and system troubleshooting.
+    </p>
+</div>
+                  <div class="skills-box">
+    <div class="skills-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+    <h3>Hardware & IT Support</h3>
+    <p class="skills-langs">Computer Assembly · Troubleshooting · Maintenance</p>
+    <p class="skills-summary">
+        Familiar with basic computer assembly and hardware troubleshooting from coursework. Gained additional practical experience debugging hardware issues during the development and testing of the thesis kiosk.
+    </p>
+</div>
+<div class="skills-box">
+    <div class="skills-icon"><i class="fa-solid fa-toolbox"></i></div>
+    <h3>Tools & Platforms</h3>
+    <p class="skills-langs">VS Code · Arduino IDE · Git · Figma · MS Office</p>
+    <p class="skills-summary">
+        Familiar with development, design, and productivity tools used for programming, embedded systems, documentation, and academic projects.
+    </p>
+</div>
+
+                </div>
+
+                <div class="soft-skills">
+                    <p class="eyebrow center">Core Strengths</p>
+                    <div class="soft-skills-grid">
+                        <span><i class="fa-solid fa-check"></i> Goal-driven</span>
+                        <span><i class="fa-solid fa-check"></i> Problem-solving</span>
+                        <span><i class="fa-solid fa-check"></i> Critical Thinking</span>
+                        <span><i class="fa-solid fa-check"></i> Adaptability</span>
+                        <span><i class="fa-solid fa-check"></i> Multitasking</span>
+                        <span><i class="fa-solid fa-check"></i> Attention to Detail</span>
+                        <span><i class="fa-solid fa-check"></i> Empathy</span>
+                        <span><i class="fa-solid fa-check"></i> Professionalism</span>
+                        <span><i class="fa-solid fa-check"></i> Computer Literacy</span>
+                        <span><i class="fa-solid fa-check"></i> Team Collaboration</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+       <!-- PROJECTS --> <section class="section" id="projects"> <div class="projects-inner"> <h2 class="heading center">My <span class="gold">Projects</span></h2> <div class="project-featured"> <div class="project-featured-text"> <span class="project-badge">Capstone Research Project</span> <h3>Self-Service E-Load Kiosk</h3> <p> An automated mobile load dispenser kiosk — our group's most recent and most complex research project. The system integrates an <strong>ESP32 microcontroller</strong>, coin and bill acceptors, a coin hopper, and an Android tablet running a WebView-based HMI interface we designed from scratch. </p> <p> The kiosk allows users to purchase prepaid mobile load credits by inserting cash, selecting a network, entering a mobile number, and receiving the load automatically — no cashier needed. The system was developed, tested, and validated following <strong>ISO/IEC 25010</strong> software quality standards, achieving high ratings across functionality, reliability, usability, and maintainability from 30+ respondents. </p><div class="project-stack-row"> <span>ESP32</span> <span>Embedded C</span><span>Android WebView</span> <span>HTML/CSS/JS</span> <span>MySQL</span> <span>Figma</span> </div> <div class="project-actions"> <a href="https://www.figma.com/design/kl9zHFcsiBAMvvsohm0FVp/SELF-SERVICE-E-LOADING-KIOSK?node-id=0-1&t=qCXYd7bsj5s6Cvwb-1" target="_blank" class="btn"> <i class="fa-brands fa-figma"></i> View App Flow in Figma </a> <a href="#" onclick="showSection('contact'); return false;" class="btn-ghost"> Ask me about this <i class="fa-solid fa-arrow-right"></i> </a> </div> </div> <div class="project-featured-gallery"> <!-- NO FRAME --> <img src="deploywithteam.jpg" alt="Thesis team with the kiosk" class="gallery-team-photo" id="gimg-team"> <!-- FRAMED KIOSK IMAGES --> <div class="gallery-row"> <img src="sideview.png" alt="E-Load Kiosk — side view" id="gimg-side"> <img src="frontview.png" alt="E-Load Kiosk — front view" id="gimg-front"> </div> </div> </div> <div class="projects-grid"> <div class="project-card"> <div class="project-card-icon"> <i class="fa-solid fa-desktop"></i> </div> <h3>Computer Systems Build Lab</h3> <p> A web-based PC building and assessment platform developed as a group academic project. Features a hardware quiz module, user authentication, and a MySQL-backed system for tracking user accounts and quiz performance records. </p> <div class="project-stack-row"> <span>PHP</span> <span>MySQL</span> <span>JavaScript</span> <span>Bootstrap</span> </div> </div> <div class="project-card"> <div class="project-card-icon"> <i class="fa-solid fa-user-pen"></i> </div> <h3>Personal Portfolio Website</h3> <p> A personal portfolio website developed using HTML, CSS, and JavaScript to showcase my skills, projects, education, and professional experience. Features a responsive multi-section layout, project gallery, downloadable resume, and a functional contact form powered by Formspree. </p> <div class="project-stack-row"> <span>HTML5</span> <span>CSS</span> <span>JavaScript</span> <span>Formspree</span> <span>Responsive Design</span> </div> </div> </div> </div> </section>
+
+        <!-- EXPERIENCE -->
+        <section class="section" id="experience">
+            <div class="experience-inner">
+                <p class="eyebrow center">Work History</p>
+                <h2 class="heading center">My <span class="gold">Experience</span></h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-header">
+                                <div>
+                                    <h3>Appointment Setter Specialist</h3>
+                                    <p class="timeline-company"><i class="fa-solid fa-building"></i> SelectVoiceCom (SVC) — BPO Industry</p>
+                                </div>
+                                <span class="timeline-date">July 2025</span>
+                            </div>
+                            <p class="timeline-intro">Working on an outbound campaign for <strong>SOLD.com</strong>, a U.S.-based referral network that connects home sellers with qualified real estate agents. My role focuses on data verification, outreach, scheduling, and CRM management — all skills that translate directly into IT operations and support roles.</p>
+                            <ul class="timeline-list">
+                                <li>Conduct structured outbound calls to real estate agents using approved scripts, ensuring accurate introduction of the referral program and successful scheduling of live webinars</li>
+                                <li>Verify and update agent profile data — phone numbers, email addresses, brokerage affiliation, office ZIP code, MLS group, and MLS ID — in the company's CRM system with high accuracy</li>
+                                <li>Consistently achieve daily quotas of 300+ calls and 7+ successful webinar appointments, demonstrating strong task management and performance under volume pressure</li>
+                                <li>Respond to agent inquiries and handle scheduling conflicts by offering alternative webinar options, applying active listening and professional communication skills in every interaction</li>
+                                <li>Provide structured feedback on call scripts and scheduling workflows to the Campaign Manager, contributing to ongoing process improvement</li>
+                                <li>Track and report daily call activity, webinar confirmations, and data discrepancies — building familiarity with operational reporting and digital workflow documentation</li>
+                            </ul>
+                            <div class="timeline-tags">
+                                <span>CRM Management</span><span>Data Verification</span><span>Outbound Calling</span>
+                                <span>Scheduling & Coordination</span><span>Reporting</span><span>Process Improvement</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-header">
+                                <div>
+                                    <h3>Customer Service Representative</h3>
+                                    <p class="timeline-company"><i class="fa-solid fa-building"></i> Foundever — BPO Industry, Cebu City</p>
+                                </div>
+                                <span class="timeline-date">July 2024 – June 2025</span>
+                            </div>
+                            <p class="timeline-intro">Handled inbound healthcare insurance support calls for a U.S.-based client. This role built a strong foundation in professional communication, structured problem-solving, and working with digital systems under pressure.</p>
+                            <ul class="timeline-list">
+                                <li>Managed 25–45+ inbound calls daily, consistently achieving first-call resolution by addressing customer concerns accurately and efficiently on the spot</li>
+                                <li>Provided detailed, accurate information on healthcare insurance policies, benefits, coverage plans, and claims processes to customers with varying levels of technical literacy</li>
+                                <li>Guided customers step-by-step through claims filing and online self-service portals, simplifying complex insurance terminology into clear, actionable instructions</li>
+                                <li>Identified and escalated technical and system-related issues through internal CRM and ticketing platforms, contributing to service quality and issue resolution tracking</li>
+                                <li>Maintained 98%+ data entry accuracy across thousands of customer interaction records, reinforcing precision and attention to detail in a high-volume environment</li>
+                            </ul>
+                            <div class="timeline-tags">
+                                <span>CRM Systems</span><span>Technical Communication</span><span>Data Entry</span>
+                                <span>Problem Solving</span><span>Healthcare Insurance</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- EDUCATION -->
+        <section class="section" id="education">
+            <div class="education-inner">
+                <p class="eyebrow center">Academic Background</p>
+                <h2 class="heading center">My <span class="gold">Education</span></h2>
+                <div class="education-grid">
+                    <div class="education-card current-edu">
+                        <div class="edu-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                        <h3>College</h3>
+                        <p class="edu-school">Cebu Technological University</p>
+                        <p class="edu-course">Bachelor of Information Technology<br>— Computer Technology</p>
+                        <span class="edu-year">2023 – Present</span>
+                    </div>
+                    <div class="education-card">
+                        <div class="edu-icon"><i class="fa-solid fa-school"></i></div>
+                        <h3>Senior High School</h3>
+                        <p class="edu-school">Rosario National High School</p>
+                        <p class="edu-course">SHS Graduate · <strong>High Honors</strong></p>
+                        <span class="edu-year">2021 – 2023</span>
+                    </div>
+                    <div class="education-card">
+                        <div class="edu-icon"><i class="fa-solid fa-school-flag"></i></div>
+                        <h3>Junior High School</h3>
+                        <p class="edu-school">Rosario National High School</p>
+                        <p class="edu-course">Junior High Graduate · <strong>With Honors</p>
+                        <span class="edu-year">2016 – 2021</span>
+                    </div>
+                    <div class="education-card">
+                        <div class="edu-icon"><i class="fa-solid fa-child-reaching"></i></div>
+                        <h3>Elementary</h3>
+                        <p class="edu-school">Rosario Elementary School</p>
+                        <p class="edu-course">Elementary Graduate · <strong>Salutatorian</p>
+                        <span class="edu-year">2012 – 2016</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+       
+<div class="contact-wrapper">
+
+<!-- CONTACT -->
+<section class="section" id="contact">
+
+    <div class="contact-inner">
+
+        <!-- TITLE -->
+        <h2 class="heading center">
+            Contact <span class="gold">Me</span>
+        </h2>
+
+        <p class="contact-tagline">
+            Interested in working together or have an OJT opportunity?
+            Reach out — I'd love to hear from you.
+        </p>
+
+        <!-- CONTACT CONTENT -->
+        <div class="contact-wrapper">
+
+            <!-- LEFT SIDE : CONTACT FORM -->
+            <div class="contact-form-wrap">
+
+                <form action="https://formspree.io/f/xnnpbaqn"
+                      method="POST"
+                      class="contact-form"
+                      id="contact-form">
+
+                    <div class="form-row">
+
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text"
+                                   id="name"
+                                   name="Full Name"
+                                   placeholder="Your full name"
+                                   required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email"
+                                   id="email"
+                                   name="Email Address"
+                                   placeholder="your@email.com"
+                                   required>
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text"
+                               id="subject"
+                               name="Email Subject"
+                               placeholder="OJT Opportunity / Inquiry"
+                               required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message"
+                                  name="Message"
+                                  rows="6"
+                                  placeholder="Tell me about your opportunity or question..."
+                                  required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-full">
+                        Send Message
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+
+                    <p class="form-status" id="form-status"></p>
+
+                </form>
+
+            </div>
+
+            <!-- RIGHT SIDE : CONTACT INFO -->
+            <div class="contact-card-group">
+
+                <div class="contact-card">
+                    <i class="fa-solid fa-envelope"></i>
+                    <h4>Email</h4>
+                    <p>michellelanguido00@gmail.com</p>
+                </div>
+
+                <div class="contact-card">
+                    <i class="fa-solid fa-phone"></i>
+                    <h4>Phone</h4>
+                    <p>09288296721</p>
+                </div>
+
+                <div class="contact-card">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <h4>Location</h4>
+                    <p>Talisay City, Cebu</p>
+                </div>
+
+                <div class="contact-card">
+                    <i class="fa-brands fa-facebook"></i>
+                    <h4>Facebook</h4>
+                    <a href="https://www.facebook.com/mishaelle.sibuyan"
+                       target="_blank">
+                        View Profile
+                    </a>
+                </div>
+        
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- FOOTER -->
+
+
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 Michelle Languido. All Rights Reserved.
+            </p>
+
+            <a href="#"
+               onclick="showSection('home'); return false;"
+               class="back-top"
+               aria-label="Back to top">
+
+                <i class="fa-solid fa-angle-up"></i>
+
+            </a>
+
+        </div>
+
+    </footer>
+
+</section>
+
+
+
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <script>
+        /* ── TAB / SECTION SWITCHER ── */
+        const overlay = document.getElementById('fade-overlay');
+
+        function showSection(id) {
+            const current = document.querySelector('.section.active');
+            if (current && current.id === id) return;
+
+            overlay.classList.add('show');
+
+            setTimeout(() => {
+                // Hide all
+                document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+                // Show target
+                const target = document.getElementById(id);
+                if (target) {
+                    target.classList.add('active');
+                    target.scrollTop = 0;
+                }
+                // Update nav
+                document.querySelectorAll('.navbar a').forEach(a => {
+                    a.classList.toggle('active', a.dataset.section === id);
+                });
+                overlay.classList.remove('show');
+            }, 200);
+
+            // Close mobile menu
+            document.getElementById('menu-icon').classList.remove('fa-xmark');
+            document.getElementById('navbar').classList.remove('active');
+        }
+
+        /* ── MOBILE MENU ── */
+        const menuIcon = document.querySelector('#menu-icon');
+        const navbar   = document.querySelector('#navbar');
+        menuIcon.onclick = () => {
+            menuIcon.classList.toggle('fa-xmark');
+            navbar.classList.toggle('active');
+        };
+      
+
+        /* ── CONTACT FORM ── */
+        const contactForm = document.getElementById('contact-form');
+        const formStatus  = document.getElementById('form-status');
+        if (contactForm && formStatus) {
+            contactForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const data = new FormData(contactForm);
+                try {
+                    const res = await fetch(contactForm.action, {
+                        method: 'POST', body: data,
+                        headers: { 'Accept': 'application/json' },
+                    });
+                    if (res.ok) {
+                        formStatus.textContent = '✓ Message sent! I\'ll get back to you soon.';
+                        formStatus.style.color = '#c9a96e';
+                        contactForm.reset();
+                    } else {
+                        formStatus.textContent = 'Something went wrong. Please try again or email me directly.';
+                        formStatus.style.color = '#e07070';
+                    }
+                } catch {
+                    formStatus.textContent = 'Network error. Please check your connection.';
+                    formStatus.style.color = '#e07070';
+                }
+                setTimeout(() => { formStatus.textContent = ''; }, 6000);
+            });
+        }
+
+        /* ── GALLERY LIGHTBOX ── */
+        document.querySelectorAll('.gallery-main img, .gallery-row img').forEach(img => {
+            img.addEventListener('click', () => {
+                const lb = document.createElement('div');
+                lb.className = 'lightbox';
+                const bi = document.createElement('img');
+                bi.src = img.src; bi.alt = img.alt;
+                lb.appendChild(bi);
+                lb.addEventListener('click', () => lb.remove());
+                document.body.appendChild(lb);
+            });
+        });
+
+        /* ── TYPED.JS ── */
+        new Typed('.multiple-text', {
+            strings: [
+                'an Aspiring IT Professional',
+                'a BIT-CT Student at CTU',
+                'an Embedded Systems Developer',
+                'a Web Developer',
+                'an OJT Ready 2026',
+            ],
+            typeSpeed: 65, backSpeed: 45, backDelay: 1500, loop: true,
+        });
+    </script>
+</body>
+</html>
